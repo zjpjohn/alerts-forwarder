@@ -1,0 +1,17 @@
+com\chinamobile\cmss\domain\Alert.class
+com\chinamobile\cmss\domain\TcpProperties.class
+com\chinamobile\cmss\service\WWWAlertService.class
+com\chinamobile\cmss\dao\WWWAlertDao.class
+com\chinamobile\cmss\domain\Echo.class
+com\chinamobile\cmss\mapper\WWWAlertMapper.class
+com\chinamobile\cmss\AlertsForwarderApplication.class
+com\chinamobile\cmss\service\impl\WWWAlertServiceImpl.class
+com\chinamobile\cmss\domain\Client$1.class
+com\chinamobile\cmss\mapper\DDLMapper.class
+com\chinamobile\cmss\web\controller\AlertHandler.class
+com\chinamobile\cmss\dao\impl\WWWAlertDaoImpl.class
+com\chinamobile\cmss\domain\WWWAlert.class
+com\chinamobile\cmss\domain\Client.class
+com\chinamobile\cmss\ServletInitializer.class
+com\chinamobile\cmss\web\controller\SimpleErrorController.class
+com\chinamobile\cmss\utils\AppUtils.class

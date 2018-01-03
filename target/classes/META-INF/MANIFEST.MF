@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: alerts_forwarder
+Implementation-Version: 0.0.1
+Built-By: ￦ﾝﾜ￥ﾥﾎ
+Implementation-Vendor-Id: com.chinamobile.cmss
+Build-Jdk: 1.8.0_144
+Implementation-URL: http://projects.spring.io/spring-boot/alerts_forwa
+ rder/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

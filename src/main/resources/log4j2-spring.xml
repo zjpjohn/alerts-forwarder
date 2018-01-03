@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This attribute tells Log4J 2 to detect changes to the configuration file 
+	 and reconfigure itself after the monitorInterval value has elapsed since the last check.
+	 
+	 Configuration根标签下辖Properties、Appenders和Loggers等子标签。
+-->
+<Configuration monitorInterval="60">
+    <Properties>
+        <Property name="log-path">/home/cmss4tianjin/logs</Property>
+        <Property name="archive">${log-path}/archive</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console-Appender" target="SYSTEM_OUT">
+            <PatternLayout>
+                <pattern>
+                    [%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
+                </pattern>>
+            </PatternLayout>
+        </Console>
+        <File name="App-File-Appender" fileName="${log-path}/app.log" >
+            <PatternLayout>
+                <pattern>
+                    [%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
+                </pattern>
+            </PatternLayout>
+        </File>
+        
+        <!-- 当error.log体积大于给定阈值时 ,将其按照给定格式压缩到.gz的压缩包中 -->
+        <RollingFile name="RollingFile-Appender"
+             		 fileName="${log-path}/error.log"
+             		 filePattern="${archive}/error.log.%d{yyyy-MM-dd-hh-mm}.gz">
+    		<PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"/>
+        	<Policies>
+             	<SizeBasedTriggeringPolicy size="30 MB"/>
+        	</Policies>
+        	<DefaultRolloverStrategy max="30"/>
+		</RollingFile>
+    </Appenders>
+    <Loggers>      
+        <!-- all loggers under the com.chinamobile.cmss.domain  package to use the file appender. -->
+        <Logger name="com.chinamobile.cmss.domain" level="error" additivity="false">
+            <AppenderRef ref="RollingFile-Appender"/>
+        </Logger>
+        
+        <!-- all loggers under the com.chinamobile.cmss.web.controller  package to use the file appender. -->
+        <Logger name="com.chinamobile.cmss.web.controller" level="warn" additivity="false">
+            <AppenderRef ref="RollingFile-Appender"/>
+        </Logger>
+        <!-- domain包下error级以上的日志和controller包下warn级以上的日志都将输出到error,log文件中 -->
+        
+        <!-- 
+        	RootLogger 
+        	如果根Logger级别设置为error,那么控制台将不会再有任何低于error级别日志输出,比如debug、info、warn等
+        -->
+        <Root level="info">
+            <AppenderRef ref="Console-Appender"/>
+        </Root>
+    </Loggers>
+</Configuration>
